@@ -3,30 +3,35 @@ import styles from './App.module.css';
 import { useEffect, useState } from 'react';
 
 function App() {
+  const [matrix, setMatrix] = useState([]);
 
-  const [products, setProducts] = useState([{ id: 0, name: "FACLOK", price: 200 }, { id: 1, name: "FACLOK++", price: 20000 }, { id: 2, name: "VOVA", price: 2 }]);
+const [X, setX] = useState(10);
+const [Y, setY] = useState(10);
 
+  useEffect ( ()=>{
+  var countElement = X * Y;
+  var Array = []
+  for ( let i = 0; i < countElement; i++){
+        Array.push (i)    
+}
 
+    setMatrix(Array)
+},[])
 
+let matrixTable = [];
 
- 
+for (let i = 0; i < Y; i++ )
+matrixTable.push(matrix.filter((value, index) => index >= 0 + (i * X) && index <= X + (i * X - 1)));
 
-  const shok = products.sort((a, b) => b.price - a.price ).map((product) => <div>
-    <img src={logo} className={styles.App_logo} alt="logo" />
-    <div>{product.name}</div>
-    <div>{product.price}</div>
-    <div></div>
-  </div>);
-
-
-
-
-
+const matrixView = matrixTable.map(row => <div className={styles.row}>{row.map(item =><button onClick={ () => { setY(item); setX(item); }} className= {styles.itemTable}>{item}</button> )}</div>)
   return (
     <div className={styles.App}>
-      
-      {shok}
+      <div className={styles.table}>{matrixView}</div>
 
+      <div className={styles.buttons}>
+      <button onClick={() => { setMatrix(matrix.map(item => item + 10)) }}>add value 10</button>
+      <button onClick={() => { setMatrix([...matrix.reverse()]) }}>reverse matrix</button>
+      </div>
     </div>
 
 
