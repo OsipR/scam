@@ -4,24 +4,19 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
-  const text = `Значит так, на носу 2024 год, а мы не только не разработали план, но и не провели анализ текущего года. \r
-Сейчас разберём, как это сделать. \r
-Составьте полный список ваших удовлетворенных потребностей. Вспоминая о своих успехах, мы меняем мнение о себе, повышаем самооценку. Поэтому находимся в более ресурсном состоянии и чувствуем себя более полноценно. \r
-Так мы создаем некую платформу ресурсов и энергии, на которой строятся все дальнейшие шаги. Поэтому так важно сначала подвести итоги, а потом планировать.`;
+  const [text, setText] = useState('');
 
-  var offers = text.split(".");
-  var paragraphs = text.split("\r");
-  var words = text.split(" "); 
-  var letters = text.match(/[a-zA-Zа-яА-Я-0-9]/g);
-  var offerOne = offers[0];
-  var offerTwo = offers[1];
-  var offerThree = offers[2];
-  var offerFour = offers[3];
-  var offerFive = offers[4];
-  var offerSix = offers[5];
-  var offerSeven = offers[6];
- // console.log(offersOne.length, offersTwo.length, offersThree.length, offersFour.length, offersFive.length, offersSix.length, offersSeven.length); 
-  
+  const offers = text.split(".").filter(item => item != "");
+  const paragraphs = text.split("\r");
+  const words = text.split(" ");
+  const letters = text.match(/[a-zA-Zа-яА-Я-0-9]/g);
+  const maxLengthOffers = Math.max(...offers.map(item => item.length));
+  const longestOffer = offers.filter(item => item.length == maxLengthOffers);
+  const minLengthOffers = Math.min(...offers.map(item => item.length));
+  const shortestOffer = offers.filter(item => item.length == minLengthOffers);
+  const middleLength = Math.round(offers.map(item => item.length).reduce((accumulator, currentValue) => {
+    return accumulator + currentValue
+  }, 0) / offers.length);
 
 
 
@@ -29,17 +24,17 @@ function App() {
   return (
     <div>
       <div>
-        Значит так, на носу 2024 год, а мы не только не разработали план, но и не провели анализ текущего года.
-        Сейчас разберём, как это сделать.
-        Составьте полный список ваших удовлетворенных потребностей.  Вспоминая о своих успехах, мы меняем мнение о себе, повышаем самооценку. Поэтому находимся в более ресурсном состоянии и чувствуем себя более полноценно.
-        Так мы создаем некую платформу ресурсов и энергии, на которой строятся все дальнейшие шаги. Поэтому так важно сначала подвести итоги, а потом планировать.
+        <input type= 'text' value={text} onChange={(e)=> setText(e.target.value)}></input>
       </div>
 
       <div>
-        <button onClick={() => alert('предложений в данном тексте: ' + (offers.length - 1))}>Кол-во предложений</button>
+        <button onClick={() => alert('предложений в данном тексте: ' + (offers.length))}>Кол-во предложений</button>
         <button onClick={() => alert('абзацев в данном тексте: ' + paragraphs.length)}>Кол-во абзацев</button>
         <button onClick={() => alert('слов в данном тексте: ' + words.length)}>Кол-во слов</button>
         <button onClick={() => alert('букв в данном тексте: ' + letters.length)}>Кол-во букв</button>
+        <button onClick={() => alert('саммое длинное предложение: ' + longestOffer)}>Саммое длинное предложение</button>
+        <button onClick={() => alert('саммое длинное предложение: ' + shortestOffer)}>Саммое короткое предложение</button>
+        <button onClick={() => alert('саммое длинное предложение: ' + middleLength)}>Средняя длина предложений</button>
       </div>
     </div>
   );
