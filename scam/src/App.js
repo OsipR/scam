@@ -3,39 +3,48 @@ import styles from './App.module.css';
 import { useEffect, useState } from 'react';
 
 function App() {
+  const [random, setRandom] = useState();
+  const [guess, setGuess] = useState('');
+  const [attempt, setAttempt] = useState(5);
 
-  const [text, setText] = useState('');
+console.log(attempt);
+  function randomNamber(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+  };
 
-  const offers = text.split(".").filter(item => item != "");
-  const paragraphs = text.split("\r");
-  const words = text.split(" ");
-  const letters = text.match(/[a-zA-Zа-яА-Я-0-9]/g);
-  const maxLengthOffers = Math.max(...offers.map(item => item.length));
-  const longestOffer = offers.filter(item => item.length == maxLengthOffers);
-  const minLengthOffers = Math.min(...offers.map(item => item.length));
-  const shortestOffer = offers.filter(item => item.length == minLengthOffers);
-  const middleLength = Math.round(offers.map(item => item.length).reduce((accumulator, currentValue) => {
-    return accumulator + currentValue
-  }, 0) / offers.length);
+  useEffect(() => {
+    setRandom(randomNamber(1, 100));
+  }, []);
+  
+  const check = () => {
+    if (guess == random) {
+      alert('вы угадали, загаданное число: ' + random);
+    } else if (guess < random) {
+      setAttempt(attempt - 1);
+      alert('загаданное число больше');
+    } else if (guess > random) {
+      setAttempt(attempt - 1);
+      alert('загаданное число меньше');
+    };
+  };
+  
 
-
+  
+    
 
 
   return (
     <div>
-      <div>
-        <input type= 'text' value={text} onChange={(e)=> setText(e.target.value)}></input>
-      </div>
+      <div>{random}</div>
+      <div>Осталось попыток: {attempt}</div>
 
       <div>
-        <button onClick={() => alert('предложений в данном тексте: ' + (offers.length))}>Кол-во предложений</button>
-        <button onClick={() => alert('абзацев в данном тексте: ' + paragraphs.length)}>Кол-во абзацев</button>
-        <button onClick={() => alert('слов в данном тексте: ' + words.length)}>Кол-во слов</button>
-        <button onClick={() => alert('букв в данном тексте: ' + letters.length)}>Кол-во букв</button>
-        <button onClick={() => alert('саммое длинное предложение: ' + longestOffer)}>Саммое длинное предложение</button>
-        <button onClick={() => alert('саммое длинное предложение: ' + shortestOffer)}>Саммое короткое предложение</button>
-        <button onClick={() => alert('саммое длинное предложение: ' + middleLength)}>Средняя длина предложений</button>
+        <input type='text' value={guess} onChange={(e) => setGuess(e.target.value)}></input>
       </div>
+      <button onClick={() => check()}>проверить</button>
+      <button onClick={() => window.location.reload()}>заново</button>
     </div>
   );
 }
