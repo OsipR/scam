@@ -2,16 +2,22 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 }
 
 .h1 {
     display: flex;
     justify-content: center;
-    color: blue;
+    color: #90EE90;
 }
 
 .p {
     
+    border: 3px solid violet;
+    font-size: medium;
+    text-align: justify;
+    margin: auto;
+    color: #90EE90;
 }
 
 .attempt {
@@ -20,17 +26,24 @@
 }
 
 .guess {
-
+    display: flex;
+    justify-content: center;
 }
 
 .buttonCheck {
-
+    margin:auto;
+    width:200px;
 }
 
 .buttonReload {
-
+    margin:auto;
+    width:200px;
 }
 
 .past {
     color: gray;
+}
+
+.dead {
+    color: red;
 }

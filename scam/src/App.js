@@ -20,7 +20,11 @@ function App() {
   }, []);
   
   const check = () => {
-    if (guess > 100) {
+    if (attempt == 0) {
+      window.location.reload();
+    } else if (guess == 0) {
+      alert('загаданное число не может быть равно 0')
+    }else if (guess > 100) {
       alert('вы ввели значение больше 100!');
     } else if (guess == random) {
       alert('вы угадали, загаданное число: ' + random);
@@ -33,8 +37,11 @@ function App() {
     };
     if (guess <= 100) {
       const number = guess  + ' ';
-    setPast(oldArray => [...oldArray, number]);
-    }
+      setPast(oldArray => [...oldArray, number]);
+    } else if (attempt == 3) {
+      
+    };
+    
   };
   
   
@@ -57,7 +64,7 @@ function App() {
       </div>
       <button onClick={() => check()} className={styles.buttonCheck}>проверить</button>
       <button onClick={() => window.location.reload()} className= {styles.buttonReload}>заново</button>
-      <div className={styles.past}>Ваши прошлые варинаты ответа: {past}</div>
+      <div className= {styles.past}>Ваши прошлые варинаты ответа: {past}</div>
     </div>
   );
 }
