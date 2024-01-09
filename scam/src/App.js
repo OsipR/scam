@@ -1,4 +1,4 @@
-import Ser from './new/ser.js';
+import Ser from './new/Ser.js';
 
 function App() {
  
