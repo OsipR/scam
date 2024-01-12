@@ -11,22 +11,27 @@ function Ser() {
         Arrau();
     }, []);
 
-    //return <div>{post.map(item => <div>{item.date}</div>)}</div>
-
+    function removePost (authorId) {
+        const newPost = post.filter((l) => l.authorId !== authorId);
+        setPost(newPost);
+    }
     return (
         <>
             {post.map((item) => {
                 const { author, authorId, date, text, isBlock } = item
+                
+                
                 return (
                     <div key={authorId}>
                         <div>{author}</div>
                         <div>{date}</div>
                         <div>{text}</div>
                         <div>{isBlock.toString()}</div>
+                        <button disabled = {isBlock} onClick={() => removePost(authorId)}>CLOSE</button>
                     </div>
                 )
+                
             })}
-
         </>
     )
 }
