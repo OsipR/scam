@@ -1,0 +1,39 @@
+.Ser {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.SerTrue, .SerFalse{
+    margin: 10px 0 10px 10px;
+    border-radius: 5px;
+    max-width: 250px;
+}
+
+.SerTrue {
+    background-color: yellowgreen;
+    border: 3px solid green;
+}
+
+.SerFalse {
+    background-color: #ff6971;
+    border: 3px solid red;
+}
+
+.author {
+    margin-left: 10px;
+}
+
+.text {
+    color: beige;
+    margin: 5px 0 5px 10px;
+}
+
+.time {
+    color: blue;
+    margin: 5px 0 5px 10px;
+}
+
+.button {
+    margin: 0 0 5px 10px;
+    border-radius: 4px;
+}
