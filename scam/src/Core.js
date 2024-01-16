@@ -13,9 +13,8 @@ export async function HttpNoData(url, method) {
 
     for (let i = 0; i < count; i++)
         result.push({
-            id: i,
-            author: 'Николай' + (i % 2 === 0 ? i : 90),
-            authorId: (i % 2 === 0 ? i : 90),
+            author: 'Николай' + i,
+            authorId: i + i,
             date: getRandomInt(2004,2024)+'-01-01T12:12:12.1457',
             text: 'This example returns a random integer between the specified values. The value is no lower than min (or the next integer greater than min if min isnt an integer), and is less than (but not equal to) max.',
             isBlock: i % 4 == 0
