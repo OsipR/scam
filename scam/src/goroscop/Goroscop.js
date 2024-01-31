@@ -5,7 +5,7 @@ function Gor() {
   const [inpute, setInpute] = useState("");
 
   // console.log(inpute)
-
+function bek() {
   const minutes = 1000 * 60;
   const hours = minutes * 60;
   const days = hours * 24;
@@ -108,48 +108,115 @@ function Gor() {
   switch (true) {
     case monthDayTime >= ovenStartTime && monthDayTime <= ovenEndTime:
       alert('oven');
+      return(
+      <div>
+        <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
+      </div>
+      )
       break;
     case monthDayTime >= telecStartTime && monthDayTime <= telecEndTime:
       alert('telec');
+      return(
+        <div>
+          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
+        </div>
+        )
       break;
     case monthDayTime >= bliznecStartTime && monthDayTime <= bliznecEndTime:
       alert('bliznec');
+      return(
+        <div>
+          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
+        </div>
+        )
       break;
     case monthDayTime >= rakStartTime && monthDayTime <= rakEndTime:
       alert('rak');
+      return(
+        <div>
+          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
+        </div>
+        )
       break;
     case monthDayTime >= levStartTime && monthDayTime <= levEndTime:
       alert('lev');
+      return(
+        <div>
+          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
+        </div>
+        )
       break;
     case monthDayTime >= devaStartTime && monthDayTime <= devaEndTime:
       alert('deva');
+      return(
+        <div>
+          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
+        </div>
+        )
       break;
     case monthDayTime >= vesiStartTime && monthDayTime <= vesiEndTime:
       alert('vesi');
+      return(
+        <div>
+          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
+        </div>
+        )
       break;
     case monthDayTime >= skorpionStartTime && monthDayTime <= skorpionEndTime:
       alert('skorpion');
+      return(
+        <div>
+          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
+        </div>
+        )
       break;
     case monthDayTime >= strelecStartTime && monthDayTime <= strelecEndTime:
       alert('strelec');
+      return(
+        <div>
+          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
+        </div>
+        )
       break;
     case monthDayTime >= kozerogStartTime:
       alert('kozerog');
+      return(
+        <div>
+          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
+        </div>
+        )
       break;
     case monthDayTime <= kozerogEndTime:
       alert('kozerog');
+      return(
+        <div>
+          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
+        </div>
+        )
       break;
     case monthDayTime >= vodoleyStartTime && monthDayTime <= vodoleyEndTime:
       alert('vodoley');
+      return(
+        <div>
+          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
+        </div>
+        )
       break;
     case monthDayTime >= ribiStartTime && monthDayTime <= ribiEndTime:
       alert('ribi');
+      return(
+        <div>
+          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
+        </div>
+        )
       break;
     default:
-
+      
+  }
   }
 
 
+  
 
 
   return (
@@ -160,8 +227,7 @@ function Gor() {
         <div>
           <label htmlFor="lifeTime" for="bday">Введите дату вашего рождения:</label>
           <input type="date" id="bday" name="bday" value={inpute} onChange={(event) => setInpute(event.target.value)} />
-          <button>ТЫК!</button>
-          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
+          <button onClick={bek}>ТЫК!</button>
         </div>
       </form>
       <button onClick={() => window.location.reload()}>заново</button>
