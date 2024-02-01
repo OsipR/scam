@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react";
+import styles from './Goroscop.module.css'
+import imgVodoley from './imgVodoley.jpg'
+
 
 function Gor() {
 
   const [inpute, setInpute] = useState("");
-
   // console.log(inpute)
-function bek() {
+
+  const [ovenText, setOvenText] = useState(false);
+  const [vodoleyText, setVodoleyText] = useState(false);
+
+  // const imgVodoley = "C:/Users/osipr/Pictures/zod/images.jpg"
+  
   const minutes = 1000 * 60;
   const hours = minutes * 60;
   const days = hours * 24;
@@ -19,10 +26,14 @@ function bek() {
   // console.log(average)
 
 
-  const lifeYears = Math.floor((lifeTime2 - lifeTime1) / years);
+  const LifeYears = Math.floor((lifeTime2 - lifeTime1) / years);
   const LifeDays = Math.floor((lifeTime2 - lifeTime1) / days);
   const LifeHours = Math.floor((lifeTime2 - lifeTime1) / hours);
   const LifeMinutes = Math.floor((lifeTime2 - lifeTime1) / minutes);
+
+function bek() {
+
+
 
 
   const splitInput = inpute.split('-');
@@ -105,136 +116,84 @@ function bek() {
   // const drt = new Date (985122000000);
   // console.log(drt + "drt")
 
-  switch (true) {
+  switch  (true) {
     case monthDayTime >= ovenStartTime && monthDayTime <= ovenEndTime:
       alert('oven');
-      return(
-      <div>
-        <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
-      </div>
-      )
+      setOvenText(!false);
       break;
     case monthDayTime >= telecStartTime && monthDayTime <= telecEndTime:
       alert('telec');
-      return(
-        <div>
-          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
-        </div>
-        )
       break;
     case monthDayTime >= bliznecStartTime && monthDayTime <= bliznecEndTime:
       alert('bliznec');
-      return(
-        <div>
-          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
-        </div>
-        )
       break;
     case monthDayTime >= rakStartTime && monthDayTime <= rakEndTime:
       alert('rak');
-      return(
-        <div>
-          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
-        </div>
-        )
       break;
     case monthDayTime >= levStartTime && monthDayTime <= levEndTime:
       alert('lev');
-      return(
-        <div>
-          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
-        </div>
-        )
       break;
     case monthDayTime >= devaStartTime && monthDayTime <= devaEndTime:
       alert('deva');
-      return(
-        <div>
-          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
-        </div>
-        )
       break;
     case monthDayTime >= vesiStartTime && monthDayTime <= vesiEndTime:
       alert('vesi');
-      return(
-        <div>
-          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
-        </div>
-        )
       break;
     case monthDayTime >= skorpionStartTime && monthDayTime <= skorpionEndTime:
       alert('skorpion');
-      return(
-        <div>
-          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
-        </div>
-        )
       break;
     case monthDayTime >= strelecStartTime && monthDayTime <= strelecEndTime:
       alert('strelec');
-      return(
-        <div>
-          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
-        </div>
-        )
       break;
     case monthDayTime >= kozerogStartTime:
       alert('kozerog');
-      return(
-        <div>
-          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
-        </div>
-        )
       break;
     case monthDayTime <= kozerogEndTime:
       alert('kozerog');
-      return(
-        <div>
-          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
-        </div>
-        )
       break;
     case monthDayTime >= vodoleyStartTime && monthDayTime <= vodoleyEndTime:
       alert('vodoley');
-      return(
-        <div>
-          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
-        </div>
-        )
+      setVodoleyText(!false);
       break;
     case monthDayTime >= ribiStartTime && monthDayTime <= ribiEndTime:
       alert('ribi');
-      return(
-        <div>
-          <div>Вы прожили уже: {lifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
-        </div>
-        )
       break;
     default:
       
   }
+
+  return(
+    {}
+  )
+
   }
 
 
   
 
-
   return (
-    <div>
+    <div className={styles.App}>
       <h1>ГОРОСКОП</h1>
       <h2>хотите узнать про свой знак зодиака? Легко!</h2>
-      <form>
+      
         <div>
           <label htmlFor="lifeTime" for="bday">Введите дату вашего рождения:</label>
           <input type="date" id="bday" name="bday" value={inpute} onChange={(event) => setInpute(event.target.value)} />
+          
           <button onClick={bek}>ТЫК!</button>
         </div>
-      </form>
+      
       <button onClick={() => window.location.reload()}>заново</button>
-
+      {ovenText? <div></div> : null }
+      {vodoleyText? <div>
+        <div>Вы прожили уже: {LifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
+        <img src = {imgVodoley}  alt="" />
+        Водолея можно представить как некого прогрессивного мудреца гороскопа. И это неслучайно, ведь он является одним из завершающих знаков зодиака, находящихся в зоне Учителя, который впитал в себя весь коллективный опыт и имеет доступ к более сложным энергиям. Поэтому среди Водолеев встречается много наставников, новаторов и изобретателей в глобальном смысле. Да и в мировых легендах Водолей упоминается как один из создателей мира людей, создатель системы. Неслучайно он соответствует архетипу Юнга Правителя, чьи ключевые черты — это конкретика, систематизация, управление.
+        </div> : null }
       <a href="https://github.com/OsipR"> Vladimir Osip</a>
     </div>
   )
+
 
 };
 export default Gor;
