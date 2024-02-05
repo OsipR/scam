@@ -1,9 +1,73 @@
-.background {
+/* .background {
     position: fixed;
    
 }
 
 .H {
     margin: 0;
+} */
+
+body {
+    background-image: url(https://images.wallpapershq.com/wallpapers/3505/wallpaper_3505_3840x2160.jpg);
+    background-size: cover;
+}
+
+.App, body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ref {
+    color: gray;
+    display: flex;
+    justify-content: center;
+}
+.H {
+    color: azure;
+    display: flex;
+    justify-content: center;
+    text-shadow: 3px 3px 3px blue;
+}
+
+.bday {
+    display: flex;
+    color: aquamarine;
+    
+}
+
+.buttonRel {
+    width: 150px;
+    margin-left: 50px;
+    margin-top: 15px;
+}
+
+.life {
+    color: antiquewhite;
+    margin-left: 50px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+.vodoley {
+    color: antiquewhite;
+}
+
+.input {
+    margin-left: 50px;
+    margin-top: 25px;
+}
+
+.znak {
+    display: flex;
+    color: azure;
+    text-shadow: 3px 3px 3px blue;
+    justify-content: center;
+    font-size: larger;
+}
+
+.img {
+    float: left;
+    margin-right: 20px;
 }
 

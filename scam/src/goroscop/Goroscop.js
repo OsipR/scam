@@ -177,21 +177,22 @@ function bek() {
       <h2 className={styles.H}>хотите узнать про свой знак зодиака? Легко!</h2>
       
         <div>
-          <label htmlFor="lifeTime" for="bday">Введите дату вашего рождения:</label>
-          <input type="date" id="bday" name="bday" value={inpute} onChange={(event) => setInpute(event.target.value)} />
+          <div  className={styles.bday}>Введите дату вашего рождения:</div>
+          <input className={styles.input} type="date" id="bday" name="bday" value={inpute} onChange={(event) => setInpute(event.target.value)} />
           
           <button onClick={bek}>ТЫК!</button>
         </div>
       
-      <button onClick={() => window.location.reload()}>заново</button>
+      <button className={styles.buttonRel} onClick={() => window.location.reload()}>заново</button>
       {ovenText? <div></div> : null }
-      {vodoleyText? <div>
-        <div>Вы прожили уже: {LifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
-        <img src = {imgVodoley}  alt="" />
+      {vodoleyText? <div className={styles.vodoley}>
+        <div className={styles.znak}>ВОДОЛЕЙ</div>
+        <div className={styles.life}>Вы прожили уже: {LifeYears} лет(года), {LifeDays} дней, {LifeHours} часов, {LifeMinutes} минут</div>
+        <img className={styles.img} src = {imgVodoley}  alt="" />
         Водолея можно представить как некого прогрессивного мудреца гороскопа. И это неслучайно, ведь он является одним из завершающих знаков зодиака, находящихся в зоне Учителя, который впитал в себя весь коллективный опыт и имеет доступ к более сложным энергиям. Поэтому среди Водолеев встречается много наставников, новаторов и изобретателей в глобальном смысле. Да и в мировых легендах Водолей упоминается как один из создателей мира людей, создатель системы. Неслучайно он соответствует архетипу Юнга Правителя, чьи ключевые черты — это конкретика, систематизация, управление.
         </div> : null }
-      <a href="https://github.com/OsipR"> Vladimir Osip</a>
-      <img className={styles.background} src="https://images.wallpapershq.com/wallpapers/3505/wallpaper_3505_3840x2160.jpg" alt=''/>
+      <a className={styles.ref} href="https://github.com/OsipR"> Vladimir Osip</a>
+      {/* <img className={styles.background} src="https://images.wallpapershq.com/wallpapers/3505/wallpaper_3505_3840x2160.jpg" alt=''/> */}
     </div>
   )
 
