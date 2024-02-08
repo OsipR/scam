@@ -7,16 +7,16 @@
     margin: 0;
 } */
 
-body {
+/* body {
     background-image: url(https://images.wallpapershq.com/wallpapers/3505/wallpaper_3505_3840x2160.jpg);
     background-size: cover;
-}
+} */
 
-.App, body {
+/* .App, body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-}
+} */
 
 .ref {
     color: gray;

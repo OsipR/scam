@@ -1,0 +1,58 @@
+.Sun {
+    position: fixed;
+    width: 200px;
+    top: 50px;
+    left: 50px;
+}
+
+.Moon {
+    position: fixed;
+    width: 200px;
+    top: 50px;
+    left: 50px;
+}
+
+.Cloud {
+    display: inline;
+    width: 600px;
+    float: right;
+}
+
+.Show-enter {
+opacity: 0;
+transform: scale(0.9);
+}
+
+.Show-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opasity 1ms, transform 1ms;
+}
+
+.Show-exit {
+    opacity: 1;
+}
+
+.Show-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opasity 1ms, transform 1ms;
+}
+
+/* .Show-enter {
+    opacity: 0;
+}
+
+.Show-enter.Show-enter-active {
+    opacity: 1;
+    transition: opacity 300ms, ease;
+}
+
+.Show-exit {
+    opacity: 1;
+}
+
+.Show-exit.Show-exit-active {
+    opacity: 0;
+    transition: opacity 300ms, ease;
+} */
