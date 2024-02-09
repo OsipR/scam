@@ -1,3 +1,10 @@
+
+.Dn {
+    
+}
+
+
+
 .Sun {
     position: fixed;
     width: 200px;
@@ -5,11 +12,18 @@
     left: 50px;
 }
 
+
 .Moon {
     position: fixed;
+    
     width: 200px;
     top: 50px;
     left: 50px;
+    bottom: 0;
+}
+
+.moonDiv {
+    
 }
 
 .Cloud {

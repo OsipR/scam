@@ -2,27 +2,31 @@ import { useEffect, useRef, useState } from "react";
 import styles from './dayNight.module.css'
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import {motion} from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 function Dn() {
     const [showSun, setShowSun] = useState(true);
     const [showMoon, setShowMoon] = useState(true);
     const [show, setShow] = useState(true)
+
+
+    const [active, setActive] = useState(false)
     const nodeRef = useRef(null)
 
-    var scroll =  window.addEventListener('scroll', function () {
-        const scrollPosition = document.documentElement.scrollTop;
-        // console.log(scrollPosition);
-
-        if (scrollPosition < 500) {
-            setShow(true)
-        }
-        if (scrollPosition > 500) {
-            setShow(false);
-        } 
-    
-    // console.log(show)
-
+    const {ref, inView } = useInView({
+        threshold: 0.5,
     });
+
+
+useEffect(() => {
+    if (inView) {
+        setActive(true);
+    }
+
+}, [inView])
+
+
+console.log(inView)
 
     const sunAnimation = {
         hidden: {
@@ -37,7 +41,7 @@ function Dn() {
 
     const moonAnimation = {
         hiddenMoon: {
-            x:-100,
+            x:-150,
             opacity: 0,
         },
         visibleMoon: {
@@ -48,8 +52,19 @@ function Dn() {
 
     return (
 
-        <div>
+        <div className={styles.Dn}>
             
+
+{/* <div>
+<img  className={styles.Sun} src="https://img.freepik.com/premium-photo/sun-cartoon-watercolor-childrens-illustration-of-the-sun-drawn-by-hand-isolated-on-a-white_276714-533.jpg?w=740" alt="" />
+</div>
+
+
+
+ <div>
+<img ref={ref} className={styles.Moon} src="https://hi-news.ru/wp-content/uploads/2013/08/wallpaper-111288-750x469.jpg" alt=""/>
+ </div> */}
+
 
 
 {/* <TransitionGroup>
@@ -74,26 +89,32 @@ function Dn() {
         </CSSTransition>
         }
     </TransitionGroup> */}
+
+    
 <motion.section
 initial="hidden"
 whileInView="visible"
+
 >
 
-        {show? 
     <motion.div>
+        
             <motion.img variants={sunAnimation} className={styles.Sun} src="https://img.freepik.com/premium-photo/sun-cartoon-watercolor-childrens-illustration-of-the-sun-drawn-by-hand-isolated-on-a-white_276714-533.jpg?w=740" alt="" />
             </motion.div>
-: null }
+
+
 </motion.section>
+
 <motion.section
 initial="hiddenMoon"
 whileInView="visibleMoon"
+className={styles.moonDiv}
 >
-{show? null:
-    <motion.section>
-            <motion.img variants={moonAnimation} className={styles.Moon} src="https://hi-news.ru/wp-content/uploads/2013/08/wallpaper-111288-750x469.jpg" alt=""/>
-            </motion.section> 
-}
+
+    <motion.div >
+            <motion.img ref={ref} variants={moonAnimation} className={styles.Moon} src="https://hi-news.ru/wp-content/uploads/2013/08/wallpaper-111288-750x469.jpg" alt=""/>
+            </motion.div> 
+
 </motion.section>
             <img className={styles.Cloud} src="https://img.freepik.com/premium-photo/a-white-cloud-with-a-white-background-and-the-word-cloud-on-it_771335-59254.jpg?w=996" alt="" />
             <img className={styles.Cloud} src="https://img.freepik.com/premium-photo/a-white-cloud-with-a-white-background-and-the-word-cloud-on-it_771335-59254.jpg?w=996" alt="" />
