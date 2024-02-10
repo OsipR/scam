@@ -1,32 +1,46 @@
 import { useEffect, useRef, useState } from "react";
 import styles from './dayNight.module.css'
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 function Dn() {
-    const [showSun, setShowSun] = useState(true);
     const [showMoon, setShowMoon] = useState(true);
     const [show, setShow] = useState(true)
-
-
+    
+    
     const [active, setActive] = useState(false)
     const nodeRef = useRef(null)
-
+    
+    
+    const [showSun, setShowSun] = useState(true);
     const {ref, inView } = useInView({
-        threshold: 0.5,
+        triggerOnce: true,
+        ootMargin: '-100px'
     });
 
+    useEffect(() => {
+        if (inView) {
+          setShowSun(true);
+        } else {
+          setShowSun(false);
+        }
+      }, [inView]);
+    // const handleIntersection = (entries) => {
+    //     if (!entries[0].isIntersecting) {
+    //       setShowSun(false);
+    //     }
+    //   };
 
-useEffect(() => {
-    if (inView) {
-        setActive(true);
-    }
+// useEffect(() => {
+//     if (inView) {
+//         setActive(true);
+//     }
 
-}, [inView])
+// }, [inView])
 
 
-console.log(inView)
+// console.log(inView)
 
     const sunAnimation = {
         hidden: {
@@ -54,6 +68,25 @@ console.log(inView)
 
         <div className={styles.Dn}>
             
+{/* <div>
+    {showSun? (
+        <div ref={ref}>
+            <img  className={styles.Sun2} src="https://img.freepik.com/premium-photo/sun-cartoon-watercolor-childrens-illustration-of-the-sun-drawn-by-hand-isolated-on-a-white_276714-533.jpg?w=740" alt="" />
+        </div>
+    ) : (
+        <div>
+            <img className={styles.Moon2} src="https://hi-news.ru/wp-content/uploads/2013/08/wallpaper-111288-750x469.jpg" alt=""/>
+        </div>
+    )}
+    
+    <div>
+        {inView ? 'Reached the bottom of the page!' : 'Scroll down to see the moon!'}
+      </div>
+</div> */}
+
+
+
+
 
 {/* <div>
 <img  className={styles.Sun} src="https://img.freepik.com/premium-photo/sun-cartoon-watercolor-childrens-illustration-of-the-sun-drawn-by-hand-isolated-on-a-white_276714-533.jpg?w=740" alt="" />
@@ -90,8 +123,8 @@ console.log(inView)
         }
     </TransitionGroup> */}
 
-    
-<motion.section
+    {showSun? 
+(<motion.section
 initial="hidden"
 whileInView="visible"
 
@@ -99,24 +132,24 @@ whileInView="visible"
 
     <motion.div>
         
-            <motion.img variants={sunAnimation} className={styles.Sun} src="https://img.freepik.com/premium-photo/sun-cartoon-watercolor-childrens-illustration-of-the-sun-drawn-by-hand-isolated-on-a-white_276714-533.jpg?w=740" alt="" />
+            <motion.img ref={ref} variants={sunAnimation} className={styles.Sun} src="https://img.freepik.com/premium-photo/sun-cartoon-watercolor-childrens-illustration-of-the-sun-drawn-by-hand-isolated-on-a-white_276714-533.jpg?w=740" alt="" />
             </motion.div>
 
 
-</motion.section>
-
-<motion.section
+</motion.section>)
+:
+(<motion.section
 initial="hiddenMoon"
 whileInView="visibleMoon"
 className={styles.moonDiv}
 >
 
     <motion.div >
-            <motion.img ref={ref} variants={moonAnimation} className={styles.Moon} src="https://hi-news.ru/wp-content/uploads/2013/08/wallpaper-111288-750x469.jpg" alt=""/>
+            <motion.img  variants={moonAnimation} className={styles.Moon} src="https://hi-news.ru/wp-content/uploads/2013/08/wallpaper-111288-750x469.jpg" alt=""/>
             </motion.div> 
 
-</motion.section>
-            <img className={styles.Cloud} src="https://img.freepik.com/premium-photo/a-white-cloud-with-a-white-background-and-the-word-cloud-on-it_771335-59254.jpg?w=996" alt="" />
+</motion.section>) }
+
             <img className={styles.Cloud} src="https://img.freepik.com/premium-photo/a-white-cloud-with-a-white-background-and-the-word-cloud-on-it_771335-59254.jpg?w=996" alt="" />
             <img className={styles.Cloud} src="https://img.freepik.com/premium-photo/a-white-cloud-with-a-white-background-and-the-word-cloud-on-it_771335-59254.jpg?w=996" alt="" />
             <img className={styles.Cloud} src="https://img.freepik.com/premium-photo/a-white-cloud-with-a-white-background-and-the-word-cloud-on-it_771335-59254.jpg?w=996" alt="" />
@@ -126,6 +159,6 @@ className={styles.moonDiv}
             <img className={styles.Cloud} src="https://img.freepik.com/premium-photo/a-white-cloud-with-a-white-background-and-the-word-cloud-on-it_771335-59254.jpg?w=996" alt="" />
         </div>
     )
-
 };
+
 export default Dn;
